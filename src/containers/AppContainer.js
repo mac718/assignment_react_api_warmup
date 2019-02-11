@@ -83,7 +83,13 @@ class AppContainer extends Component {
           users[userIndex].updatedAt = json.updatedAt 
           this.setState({
             isFetching: false,
-            users: [...users]
+            users: [...users],
+            currentUser: {
+              id: '',
+              first_name: '',
+              last_name: '',
+              avatar: ''
+            }
           }, () => { form.reset() })
         }
       })
@@ -148,38 +154,38 @@ class AppContainer extends Component {
     this.setState({currentUser: currentUser[0]})
     console.log(this.state.currentUser)
 
-    this.setState({isFetching: true});
+    // this.setState({isFetching: true});
 
-    fetch(`https://reqres.in/api/users/${userId}`, options)
-      .then(response => {
-        if(!response.ok) {
-          throw new Error(`${response.status} ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then((json) => {
-        this.setState({
-          isFetching: false,
-          //currentUser: JSON.stringify(json)
-        })
-        //console.log(this.state.currentUser)
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({
-          isFetching: false, 
-          error
-        })
-      })
+    // fetch(`https://reqres.in/api/users/${userId}`, options)
+    //   .then(response => {
+    //     if(!response.ok) {
+    //       throw new Error(`${response.status} ${response.statusText}`);
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((json) => {
+    //     this.setState({
+    //       isFetching: false,
+    //       //currentUser: JSON.stringify(json)
+    //     })
+    //     //console.log(this.state.currentUser)
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //     this.setState({
+    //       isFetching: false, 
+    //       error
+    //     })
+    //   })
   }
 
   onChange = (e) => {
-    this.setState({
-      currentUser: {
-        [e.target.name]: [e.target.value],
-        ...this.state.currentUser,
-      }
-    }, console.log(this.state.currentUser.first_name))
+    // this.setState({
+    //   currentUser: {
+    //     [e.target.name]: [e.target.value],
+    //     ...this.state.currentUser,
+    //   }
+    // }, console.log(this.state.currentUser.first_name))
   } 
 
   render() {
