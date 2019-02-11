@@ -5,15 +5,21 @@ import UserList from './UserList';
 import UserForm from './UserForm';
 import serialize from 'form-serialize'
 
-const App = ({users, isFetching, onAddUser, error, onDeleteUser}) => {
+const App = ({users, currentUser, isFetching, onAddUser, error, onDeleteUser, onEditUser, onChange}) => {
 
     return (
       <div className="App">
-        <UserList users={users} isFetching={isFetching} onDeleteUser={onDeleteUser} />
+        <UserList users={users} 
+          currentUser={currentUser} 
+          isFetching={isFetching} 
+          onDeleteUser={onDeleteUser} 
+          onEditUser={onEditUser} />
         <br />
         <UserForm 
           onSubmit={onAddUser}
           error={error} 
+          currentUser={currentUser}
+          onChange={onChange}
         />
       </div>
     );

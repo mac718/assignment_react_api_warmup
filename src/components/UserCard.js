@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserCard = ({user, onDeletUser}) => {
+const UserCard = ({user, onDeletUser, onEditUser}) => {
   const {first_name, last_name, avatar} = user;
   console.log(user)
 
@@ -18,6 +18,7 @@ const UserCard = ({user, onDeletUser}) => {
         <h4>{first_name} {last_name}</h4>
       </div>
       <a href='#' onClick={onDeletUser}>Delete User</a>
+      <a href='#' onClick={onEditUser}>Edit User Details</a>
     </div>
   )
 }
